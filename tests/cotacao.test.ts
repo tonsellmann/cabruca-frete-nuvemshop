@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { cabruca } from '../src/config/loja.ts';
+import type { Previsao } from '../src/dominio/clima.ts';
 import { classeDoCarrinho, cotar, despachoSemParada, primeiroDespacho } from '../src/dominio/cotacao.ts';
 import { CEP, TERCA_DE_MANHA, carrinho, naBahia, previsaoCom } from './apoio.ts';
 
 const quentes = previsaoCom({ SP: 31, RS: 22, MT: 38, AM: 33, BA: 28 });
-const pedir = (itens: ReturnType<typeof carrinho>, cep: string, agora = TERCA_DE_MANHA, previsao = quentes) =>
+const pedir = (itens: ReturnType<typeof carrinho>, cep: string, agora = TERCA_DE_MANHA, previsao: Previsao | null = quentes) =>
   cotar({ itens, cep, agora, config: cabruca, previsao });
 const opcao = (cotacao: ReturnType<typeof pedir>, codigo: string) => (cotacao.ok ? cotacao.opcoes.find((o) => o.codigo === codigo) : undefined);
 const codigos = (cotacao: ReturnType<typeof pedir>) => (cotacao.ok ? cotacao.opcoes.map((o) => o.codigo) : []);
