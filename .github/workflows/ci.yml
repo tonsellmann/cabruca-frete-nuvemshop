@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npm run tipos
+      - run: npm test
+      # A demonstração usa o mesmo código, sem os tipos: precisa sair JavaScript válido.
+      - run: npm run demo && for f in .demo/app/*/*.js .demo/demo.js; do node --check "$f"; done

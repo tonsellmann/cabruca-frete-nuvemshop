@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frete que não derrete · Cabruca Chocolates</title>
+<meta name="robots" content="noindex">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/gloock@5.2.6/files/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/albert-sans@5.2.6/files/albert-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="demo.css">
+<script type="module" src="demo.js"></script>
+</head>
+<body>
+<p class="conceito">Projeto conceito: a Cabruca é fictícia. Esta é a etapa de frete do checkout da Nuvemshop, simulada no navegador com o código do app.</p>
+
+<header class="topo">
+  <span class="marca">Cabruca</span>
+  <ol class="passos" aria-label="Etapas do checkout">
+    <li>Carrinho</li>
+    <li aria-current="step">Entrega</li>
+    <li>Pagamento</li>
+  </ol>
+</header>
+
+<main class="checkout">
+  <section class="coluna" aria-labelledby="pedido-titulo">
+    <h1 id="pedido-titulo">Frete que não derrete</h1>
+    <p class="lede">Cada opção de frete é calculada para o chocolate chegar inteiro: o app olha a previsão do tempo no destino, o prazo de cada serviço e os fins de semana no meio do caminho.</p>
+
+    <h2>Seu pedido</h2>
+    <ul class="produtos" data-produtos></ul>
+
+    <h2>Para onde vai</h2>
+    <label class="campo">CEP
+      <input data-cep inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000">
+    </label>
+    <div class="atalhos" data-atalhos aria-label="CEPs de exemplo"></div>
+
+    <h2>Quando o pagamento cai</h2>
+    <div class="momentos" role="radiogroup" aria-label="Momento do pagamento" data-momentos></div>
+    <label class="calor"><input type="checkbox" data-calor> Onda de calor: +5 °C na previsão</label>
+  </section>
+
+  <section class="coluna coluna--frete" aria-labelledby="frete-titulo" aria-live="polite">
+    <h2 id="frete-titulo">Opções de entrega</h2>
+    <p class="origem-da-previsao" data-origem></p>
+    <div data-opcoes></div>
+    <div class="termometro" data-termometro></div>
+    <div data-descartes></div>
+    <details class="por-dentro">
+      <summary>O que o app responde à Nuvemshop</summary>
+      <pre data-json></pre>
+    </details>
+    <div class="nota" data-nota></div>
+  </section>
+</main>
+
+<footer class="rodape">
+  Previsão do tempo: <a href="https://open-meteo.com">Open-Meteo</a> (CC BY 4.0). Fotos dos produtos: créditos no portfólio.
+</footer>
+</body>
+</html>

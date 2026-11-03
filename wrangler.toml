@@ -1,0 +1,20 @@
+# O app no Cloudflare Workers. Os segredos não ficam aqui:
+#   npx wrangler secret put NUVEMSHOP_CLIENT_SECRET
+name = "cabruca-frete"
+main = "src/worker.ts"
+compatibility_date = "2026-10-01"
+
+# Token de cada loja e a última previsão do tempo.
+# Crie com: npx wrangler kv namespace create ARMAZEM
+[[kv_namespaces]]
+binding = "ARMAZEM"
+id = "troque-pelo-id-do-namespace"
+
+# A previsão das 27 capitais, de 3 em 3 horas.
+[triggers]
+crons = ["0 */3 * * *"]
+
+[vars]
+NUVEMSHOP_APP_ID = "troque-pelo-id-do-app"
+URL_DO_APP = "https://cabruca-frete.exemplo.workers.dev"
+CONTATO = "contato@cabruca.exemplo"

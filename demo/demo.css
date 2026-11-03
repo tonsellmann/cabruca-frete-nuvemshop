@@ -1,0 +1,108 @@
+/* As cores da Cabruca: cacau, creme e ouro. Vermelho para o que derrete, âmbar para o que amolece. */
+@font-face { font-family: 'Gloock'; font-weight: 400; font-display: swap; src: url(https://cdn.jsdelivr.net/npm/@fontsource/gloock@5.2.6/files/gloock-latin-400-normal.woff2) format('woff2'); }
+@font-face { font-family: 'Albert Sans'; font-weight: 100 900; font-display: swap; src: url(https://cdn.jsdelivr.net/npm/@fontsource-variable/albert-sans@5.2.6/files/albert-sans-latin-wght-normal.woff2) format('woff2'); }
+
+:root {
+  --cacau: #1f110b;
+  --cacau-suave: #5b4335;
+  --creme: #f6ecdf;
+  --papel: #fffaf3;
+  --linha: #e2d2bd;
+  --ouro: #d6a03c;
+  --ouro-claro: #f6e3b8;
+  --derrete: #a8321f;
+  --derrete-claro: #f7dcd4;
+  --amolece: #8a5300;
+  --amolece-claro: #f8e6c4;
+  --seguro: #2f6b3a;
+  --seguro-claro: #dcefdc;
+  --raio: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--creme); color: var(--cacau); font: 400 1rem/1.5 'Albert Sans', system-ui, sans-serif; }
+h1, h2, h3 { margin: 0; font-weight: 400; }
+h1 { font: 400 clamp(2rem, 4vw, 2.75rem)/1.05 'Gloock', Georgia, serif; }
+h2 { margin: 1.8rem 0 .7rem; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cacau-suave); }
+h3 { font-size: .95rem; font-weight: 700; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--ouro); outline-offset: 2px; }
+
+.conceito { margin: 0; padding: .45rem 1rem; background: var(--cacau); color: var(--creme); font-size: .85rem; text-align: center; }
+.topo { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 4vw, 2.5rem); border-bottom: 1px solid var(--linha); background: var(--papel); }
+.marca { font: 400 1.6rem/1 'Gloock', Georgia, serif; }
+.passos { display: flex; gap: .4rem; margin: 0; padding: 0; list-style: none; font-size: .85rem; color: var(--cacau-suave); }
+.passos li + li::before { content: '›'; margin-right: .4rem; }
+.passos [aria-current] { color: var(--cacau); font-weight: 700; }
+
+.checkout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 3.5rem); max-width: 72rem; margin: 0 auto; padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem); }
+@media (max-width: 860px) { .checkout { grid-template-columns: 1fr; } }
+.lede { margin: .8rem 0 0; color: var(--cacau-suave); max-width: 34rem; }
+
+.produtos { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+.produto { display: grid; grid-template-columns: 3.5rem 1fr auto; align-items: center; gap: .8rem; padding: .5rem .6rem; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--papel); }
+.produto--no-carrinho { border-color: var(--cacau); }
+.produto img { width: 3.5rem; height: 3.5rem; border-radius: 8px; object-fit: cover; background: var(--linha); }
+.produto__texto { display: grid; gap: .15rem; min-width: 0; }
+.classe { justify-self: start; padding: .05rem .45rem; border-radius: 6px; font-size: .78rem; font-weight: 700; }
+.classe--derrete { background: var(--derrete-claro); color: var(--derrete); }
+.classe--amolece { background: var(--amolece-claro); color: var(--amolece); }
+.classe--nao-derrete { background: var(--seguro-claro); color: var(--seguro); }
+.quantidade { display: inline-flex; align-items: center; border: 1px solid var(--linha); border-radius: 999px; }
+.quantidade button { width: 2.3rem; height: 2.3rem; border: 0; background: none; font-size: 1.2rem; cursor: pointer; border-radius: 999px; }
+.quantidade button:hover:not(:disabled) { background: var(--creme); }
+.quantidade button:disabled { opacity: .3; cursor: default; }
+.quantidade output { min-width: 1.4rem; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.campo { display: grid; gap: .3rem; max-width: 14rem; font-weight: 600; font-size: .9rem; }
+.campo input { min-height: 2.8rem; padding: .5rem .8rem; border: 1px solid var(--cacau-suave); border-radius: 10px; background: var(--papel); font-size: 1.05rem; letter-spacing: .04em; }
+.atalhos, .momentos { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+.atalho, .momento { min-height: 2.4rem; padding: .35rem .85rem; border: 1px solid var(--linha); border-radius: 999px; background: var(--papel); cursor: pointer; font-size: .9rem; }
+.atalho:hover, .momento:hover { border-color: var(--cacau); }
+.atalho[aria-pressed='true'], .momento[aria-checked='true'] { background: var(--cacau); border-color: var(--cacau); color: var(--creme); }
+.calor { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1rem; font-size: .9rem; cursor: pointer; }
+.calor input { width: 1.1rem; height: 1.1rem; accent-color: var(--derrete); }
+
+.coluna--frete { align-self: start; position: sticky; top: 1rem; padding: 1.4rem; border-radius: 16px; background: var(--papel); border: 1px solid var(--linha); }
+@media (max-width: 860px) { .coluna--frete { position: static; } }
+.coluna--frete > h2 { margin-top: 0; }
+.origem-da-previsao { margin: -.3rem 0 1rem; font-size: .82rem; color: var(--cacau-suave); }
+.destino { margin: 0 0 .8rem; font-size: .9rem; }
+.aviso { padding: .8rem 1rem; border-radius: var(--raio); background: var(--ouro-claro); }
+
+.opcoes { display: grid; gap: .55rem; }
+.opcao { display: grid; grid-template-columns: 1fr auto; gap: .15rem 1rem; width: 100%; padding: .85rem 1rem; border: 1.5px solid var(--linha); border-radius: var(--raio); background: #fff; text-align: left; cursor: pointer; }
+.opcao:hover { border-color: var(--cacau-suave); }
+.opcao[aria-checked='true'] { border-color: var(--cacau); box-shadow: inset 0 0 0 1px var(--cacau); }
+.opcao__nome { font-weight: 700; }
+.opcao__preco { font-weight: 800; font-variant-numeric: tabular-nums; }
+.opcao__prazo, .opcao__detalhe { grid-column: 1 / -1; font-size: .88rem; color: var(--cacau-suave); }
+.opcao--termica .opcao__detalhe::before { content: ''; display: inline-block; width: .55rem; height: .55rem; margin-right: .4rem; border-radius: 2px; background: #4a90b8; vertical-align: .05rem; }
+
+.termometro { margin-top: 1.4rem; }
+.termometro h3 { margin-bottom: .6rem; }
+.dias { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: .3rem; margin: 0; padding: 0; list-style: none; }
+.dias li { display: grid; justify-items: center; gap: .2rem; padding: .35rem 0 .3rem; border-radius: 8px; font-size: .78rem; }
+.dias li.na-viagem { background: var(--ouro-claro); }
+.dias li.parado .dia { text-decoration: line-through; color: var(--cacau-suave); }
+.barra { display: block; width: .55rem; height: 3.2rem; border-radius: 999px; background: linear-gradient(to top, var(--cacau-suave) calc(var(--t) * 100%), var(--linha) 0); }
+.quente .barra { background: linear-gradient(to top, var(--derrete) calc(var(--t) * 100%), var(--linha) 0); }
+.graus { font-weight: 700; font-variant-numeric: tabular-nums; }
+.legenda { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .5rem; margin: .6rem 0 0; font-size: .8rem; color: var(--cacau-suave); }
+.chave { display: inline-block; width: .8rem; height: .8rem; border-radius: 3px; }
+.chave--viagem { background: var(--ouro-claro); border: 1px solid var(--ouro); }
+.chave--parado { background: linear-gradient(to bottom right, transparent 45%, var(--cacau-suave) 45% 55%, transparent 55%); border: 1px solid var(--linha); }
+.chave--quente { background: var(--derrete); }
+
+.descartes { margin-top: 1.2rem; padding: .9rem 1rem; border-radius: var(--raio); background: var(--derrete-claro); }
+.descartes ul { margin: .4rem 0 0; padding-left: 1.1rem; font-size: .9rem; }
+.por-dentro { margin-top: 1.2rem; font-size: .9rem; }
+.por-dentro summary { cursor: pointer; font-weight: 700; }
+.por-dentro pre { max-height: 18rem; overflow: auto; margin: .6rem 0 0; padding: .8rem; border-radius: 10px; background: var(--cacau); color: var(--creme); font-size: .78rem; line-height: 1.45; }
+.nota { margin-top: 1.2rem; padding: .9rem 1rem; border-left: 4px solid var(--ouro); background: var(--creme); border-radius: 0 var(--raio) var(--raio) 0; }
+.nota:empty { display: none; }
+.nota p { margin: .3rem 0 0; font-size: .92rem; }
+
+.rodape { padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 2rem; font-size: .82rem; color: var(--cacau-suave); text-align: center; }
+.rodape a { color: inherit; }

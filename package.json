@@ -1,0 +1,22 @@
+{
+  "name": "cabruca-frete-nuvemshop",
+  "private": true,
+  "type": "module",
+  "description": "App de frete da Nuvemshop para chocolate: opções que chegam inteiras, pela previsão do tempo, pelo prazo e pelos fins de semana do caminho.",
+  "scripts": {
+    "test": "vitest run",
+    "tipos": "tsc --noEmit",
+    "demo": "node scripts/preparar-demonstracao.mjs .demo",
+    "dev": "wrangler dev",
+    "publicar": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.40.0"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}
